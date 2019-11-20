@@ -17,7 +17,11 @@ import { map } from 'rxjs/operators';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
+
+  // 畫面顯示的資料
   public view: Observable<GridDataResult>;
+
+  // grid的狀態(排序、分頁、筆數)
   public gridState: State = {
     sort: [],
     skip: 0,
@@ -26,9 +30,12 @@ export class AppComponent implements OnInit {
   public formGroup: FormGroup;
 
   private editService: EditService;
+
+  // 當前，編輯列的index
   private editedRowIndex: number;
 
   constructor(@Inject(EditService) editServiceFactory: any) {
+    // 將service注入
     this.editService = editServiceFactory();
   }
 
